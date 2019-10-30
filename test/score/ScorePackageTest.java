@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class HighScoreTest {
+class ScorePackageTest {
 
     @Test
     void constructorTest() {
@@ -15,6 +15,7 @@ class HighScoreTest {
         assertEquals("obj", hs.fileName);
         HighScore hs2 = new HighScore();
         assertEquals("save", hs2.fileName);
+
     }
 
     @Test
@@ -29,7 +30,7 @@ class HighScoreTest {
     }
 
     @Test
-    void getTopList() throws InterruptedException {
+    void getTopList_and_Comparators() throws InterruptedException {
         HighScore hs = new HighScore();
         Score bela = new Score("bela", 20);
         Thread.sleep(1100);

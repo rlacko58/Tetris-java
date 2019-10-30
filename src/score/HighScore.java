@@ -54,7 +54,7 @@ public class HighScore {
 
     public void load() {
         try {
-            ObjectInputStream is = new ObjectInputStream(new FileInputStream(fileName));
+            ObjectInputStream is = new ObjectInputStream(new FileInputStream("files/" + fileName));
             toplist = (ArrayList<Score>) is.readObject();
         } catch (IOException e) {
             save();
@@ -65,7 +65,7 @@ public class HighScore {
 
     public void save() {
         try {
-            ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(fileName));
+            ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream("files/" + fileName));
             os.writeObject(toplist);
         } catch (IOException e) {
             // do nothing

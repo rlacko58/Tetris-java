@@ -1,3 +1,5 @@
+import score.HighScore;
+
 public class Main {
     private static void printTetronimo(boolean[][] t){
         for(int i=0; i<t.length; i++){
@@ -10,6 +12,5 @@ public class Main {
     }
 
     public static void main(String[] args) {
-
     }
 }

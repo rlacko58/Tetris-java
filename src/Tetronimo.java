@@ -8,50 +8,53 @@ public class Tetronimo {
         setTetro(which);
     }
 
-    public boolean[][] getArray(){
+    public boolean[][] getArray() {
         return t;
     }
 
-    public int getColor(){
+    public int getColor() {
         return color;
     }
 
-    public int getSize(){
+    public int getSize() {
         return t.length;
     }
 
-    public void RotateLeft(){
+    public void RotateLeft() {
         t = rotate(t, false);
     }
-    public void RotateRight(){
+
+    public void RotateRight() {
         t = rotate(t, true);
     }
-    public boolean[][] getRotateLeft(){
+
+    public boolean[][] getRotateLeft() {
         return rotate(t, false);
     }
-    public boolean[][] getRotateRight(){
+
+    public boolean[][] getRotateRight() {
         return rotate(t, true);
     }
 
-    private boolean[][] copyMatrix(boolean[][] arr){
+    private boolean[][] copyMatrix(boolean[][] arr) {
         return Arrays.stream(arr).map(boolean[]::clone).toArray(boolean[][]::new);
     }
 
-    private boolean[][] rotate(boolean[][] arr, boolean direction){
+    private boolean[][] rotate(boolean[][] arr, boolean direction) {
         boolean[][] tempArr = copyMatrix(arr);
         // direction == true : RIGHT
         // direction == false : LEFT
-        if(direction){
-            for (int i = 0; i<arr.length; i++){
-                for (int j=0; j<arr.length; j++){
-                    tempArr[j][arr.length-1-i] = arr[i][j];
+        if (direction) {
+            for (int i = 0; i < arr.length; i++) {
+                for (int j = 0; j < arr.length; j++) {
+                    tempArr[j][arr.length - 1 - i] = arr[i][j];
                 }
             }
             return tempArr;
         } else {
-            for (int i = 0; i<arr.length; i++){
-                for (int j=0; j<arr.length; j++){
-                    tempArr[j][i] = arr[i][arr.length-1-j];
+            for (int i = 0; i < arr.length; i++) {
+                for (int j = 0; j < arr.length; j++) {
+                    tempArr[j][i] = arr[i][arr.length - 1 - j];
                 }
             }
             return tempArr;

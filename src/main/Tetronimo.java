@@ -1,32 +1,34 @@
+package main;
+
 import java.util.Arrays;
 
 /**
- * Represents a Tetronimo in the game area
- * Many Tetronimo can be in the game area
+ * Represents a main.Tetronimo in the game area.
+ * Many main.Tetronimo can be in the game area.
  */
 
 public class Tetronimo {
     /**
-     * The matrix that stores the shape of a Tetronimo
-     * This will placed into the game area, can be rotated
+     * The matrix that stores the shape of a main.Tetronimo.
+     * This will placed into the game area, can be rotated.
      */
     private boolean[][] t;
     /**
-     * Defines the type of the Tetronimo
-     * We need it for its color
+     * Defines the type of the main.Tetronimo.
+     * We need it for its color.
      */
     private char type;
 
     /**
-     * Creates the new Tetronimo from the given shape type
-     * @param which Tetronimo shape (I, J, L, O, S, T, Z)
+     * Creates the new main.Tetronimo from the given shape type.
+     * @param which main.Tetronimo shape (I, J, L, O, S, T, Z)
      */
     Tetronimo(char which) {
         setTetro(which);
     }
 
     /**
-     *
+     * Return the shape in a boolean matrix.
      * @return Shape in a boolean matrix
      */
     public boolean[][] getArray() {
@@ -34,7 +36,7 @@ public class Tetronimo {
     }
 
     /**
-     *
+     * Returns the size of the matrix ( size x size )
      * @return Size of the matrix ( size x size )
      */
     public int getSize() {
@@ -42,30 +44,30 @@ public class Tetronimo {
     }
 
     /**
-     *
-     * @return Type of the Tetronimo
+     * Returns the type of the main.Tetronimo (I, J, L, O, S, T, Z)
+     * @return Type of the main.Tetronimo
      */
     public char getType() {
         return type;
     }
 
     /**
-     * Rotates the shape Counterclockwise
+     * Rotates the shape Counterclockwise.
      */
     public void RotateLeft() {
         t = rotate(t, false);
     }
 
     /**
-     * Rotates the shape Clockwise
+     * Rotates the shape Clockwise.
      */
     public void RotateRight() {
         t = rotate(t, true);
     }
 
     /**
-     * Return the Counterclockwise rotated shape
-     * Doesn't change the Tetronimo
+     * Return the Counterclockwise rotated shape.
+     * Doesn't change the main.Tetronimo.
      * @return Counterclockwise rotated shape
      */
     public boolean[][] getRotateLeft() {
@@ -73,8 +75,8 @@ public class Tetronimo {
     }
 
     /**
-     * Return the Clockwise rotated shape
-     * Doesn't change the Tetronimo
+     * Return the Clockwise rotated shape.
+     * Doesn't change the main.Tetronimo.
      * @return Clockwise rotated shape
      */
     public boolean[][] getRotateRight() {
@@ -82,7 +84,7 @@ public class Tetronimo {
     }
 
     /**
-     * Makes a copy of a given matrix
+     * Makes a copy of a given matrix.
      * @param arr Matrix to be copied
      * @return New copied matrix
      */
@@ -91,8 +93,8 @@ public class Tetronimo {
     }
 
     /**
-     * Rotates the given matrix and returns it
-     * If the direction is TRUE, then rotates clockwise, otherwise Counterclockwise
+     * Rotates the given matrix and returns it.
+     * If the direction is TRUE, then rotates clockwise, otherwise Counterclockwise.
      * @param arr Matrix to be rotated
      * @param direction Direction of the rotation (clockwise / counterclockwise)
      * @return Rotated matrix
@@ -119,8 +121,8 @@ public class Tetronimo {
     }
 
     /**
-     * Sets the Tetronimo's shape and type
-     * It has every shapes matrix in a switch statement
+     * Sets the main.Tetronimo's shape and type.
+     * It has every shapes matrix in a switch statement.
      * @param which Type of the tetronimo to be set
      */
     private void setTetro(char which) {

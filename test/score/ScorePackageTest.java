@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class ScorePackageTest {
 
     @Test
-    void constructorTest() {
+    void constructor() {
         HighScore hs = new HighScore("obj");
         assertEquals("obj", hs.fileName);
         HighScore hs2 = new HighScore();

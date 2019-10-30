@@ -2,7 +2,7 @@ import java.util.Arrays;
 
 public class Tetronimo {
     private boolean[][] t;
-    private int color;
+    private char type;
 
     Tetronimo(char which) {
         setTetro(which);
@@ -12,12 +12,12 @@ public class Tetronimo {
         return t;
     }
 
-    public int getColor() {
-        return color;
-    }
-
     public int getSize() {
         return t.length;
+    }
+
+    public char getType() {
+        return type;
     }
 
     public void RotateLeft() {
@@ -62,6 +62,7 @@ public class Tetronimo {
     }
 
     private void setTetro(char which) {
+        type=which;
         switch (which) {
             case 'I':
                 t = new boolean[][]{
@@ -70,7 +71,6 @@ public class Tetronimo {
                         {false, false, false, false},
                         {true, true, true, true}
                 };
-                color = 1;
                 break;
             case 'J':
                 t = new boolean[][]{
@@ -78,7 +78,6 @@ public class Tetronimo {
                         {true, false, false},
                         {true, true, true}
                 };
-                color = 2;
                 break;
             case 'L':
                 t = new boolean[][]{
@@ -86,14 +85,12 @@ public class Tetronimo {
                         {false, false, true},
                         {true, true, true}
                 };
-                color = 3;
                 break;
             case 'O':
                 t = new boolean[][]{
                         {true, true},
                         {true, true}
                 };
-                color = 4;
                 break;
             case 'S':
                 t = new boolean[][]{
@@ -101,7 +98,6 @@ public class Tetronimo {
                         {false, true, true},
                         {true, true, false}
                 };
-                color = 5;
                 break;
             case 'T':
                 t = new boolean[][]{
@@ -109,7 +105,6 @@ public class Tetronimo {
                         {false, true, false},
                         {true, true, true}
                 };
-                color = 6;
                 break;
             case 'Z':
                 t = new boolean[][]{
@@ -117,7 +112,6 @@ public class Tetronimo {
                         {true, true, false},
                         {false, true, true}
                 };
-                color = 7;
                 break;
             default:
                 //do nothing

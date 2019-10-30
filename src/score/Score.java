@@ -8,7 +8,7 @@ public class Score implements Serializable {
     int point;
     String name;
 
-    Score(String name, int point) {
+    public Score(String name, int point) {
         this.name = name;
         this.point = point;
         this.date = new Date(System.currentTimeMillis());

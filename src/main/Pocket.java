@@ -2,8 +2,18 @@ package main;
 
 import java.util.LinkedList;
 
+/**
+ * Stores the next Tetronimoes.
+ */
 public class Pocket {
+    /**
+     * List which stores the Tetronimoes.
+     */
     LinkedList<Tetronimo> t;
+
+    /**
+     * Initializes the Pocket with 3 Tetronimo.
+     */
     Pocket(){
         t = new LinkedList<Tetronimo>();
         t.addLast(generateTetro());
@@ -11,11 +21,20 @@ public class Pocket {
         t.addLast(generateTetro());
     }
 
+    /**
+     * Returns the next Tetronimo and deletes it.
+     * Generates a new and ads it.
+     * @return Next Tetronimo
+     */
     public Tetronimo getTetro(){
         t.addLast(generateTetro());
         return t.removeFirst();
     }
 
+    /**
+     * Returns the next 3 Tetronimoes type (I, J, L, ...)
+     * @return Next 3 Tetronimoes type
+     */
     public char[] displayPocket(){
         return new char[]{
                 t.get(0).getType(),
@@ -24,10 +43,18 @@ public class Pocket {
         };
     }
 
+    /**
+     * Returns a newly generated Tetronimo.
+     * @return Generated Tetronimo
+     */
     private Tetronimo generateTetro(){
         return new Tetronimo(generateShape());
     }
 
+    /**
+     * Generates a new Tetronimo type (I, J, L, ...)
+     * @return new Tetronimo type
+     */
     private char generateShape(){
         int randomNum = (int)(Math.random()*(7))+1;
         switch(randomNum){

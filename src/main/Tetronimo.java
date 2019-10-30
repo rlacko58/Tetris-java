@@ -6,7 +6,6 @@ import java.util.Arrays;
  * Represents a main.Tetronimo in the game area.
  * Many main.Tetronimo can be in the game area.
  */
-
 public class Tetronimo {
     /**
      * The matrix that stores the shape of a main.Tetronimo.

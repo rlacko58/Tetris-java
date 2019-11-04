@@ -20,6 +20,7 @@ public class HighScore {
 
     /**
      * Loads the Scores from a given file
+     *
      * @param fileName Name of the file to work with
      */
     HighScore(String fileName) {
@@ -39,19 +40,21 @@ public class HighScore {
 
     /**
      * Adds a given Score to the topList
+     *
      * @param s Score to add
      */
-    public void addScore(Score s){
+    public void addScore(Score s) {
         toplist.add(s);
     }
 
     /**
      * Returns n Score from the TopList as an ordered ArrayList
+     *
      * @param orderBy What to order by ("Name", "Point", "Date")
-     * @param count How many Scores to be returned with
+     * @param count   How many Scores to be returned with
      * @return N Score in an Order
      */
-    public ArrayList<Score> getTopList(String orderBy, int count){
+    public ArrayList<Score> getTopList(String orderBy, int count) {
         Comparator<Score> cmp = null;
         switch (orderBy) {
             case "Name":
@@ -72,12 +75,13 @@ public class HighScore {
 
     /**
      * Returns N Score from the topList array
+     *
      * @param count Number to return with
      * @return The new reduced Array
      */
-    private ArrayList<Score> getN(int count){
+    private ArrayList<Score> getN(int count) {
         ArrayList<Score> newArr = new ArrayList<Score>();
-        for(int i=0; i<toplist.size() && i<count; i++){
+        for (int i = 0; i < toplist.size() && i < count; i++) {
             newArr.add(toplist.get(i));
         }
         return newArr;

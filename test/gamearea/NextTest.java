@@ -2,7 +2,8 @@ package gamearea;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class NextTest {
 
@@ -25,7 +26,7 @@ class NextTest {
     void displayPocket() {
         Next p = new Next();
         char[] c = new char[]{
-                p.t.get(0).getType(),p.t.get(1).getType(),p.t.get(2).getType()
+                p.t.get(0).getType(), p.t.get(1).getType(), p.t.get(2).getType()
         };
         assertArrayEquals(p.displayPocket(), c);
     }

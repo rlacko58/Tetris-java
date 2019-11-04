@@ -23,7 +23,8 @@ public class Score implements Serializable {
 
     /**
      * Constructor of the Score. The date is automatically set to the current Time.
-     * @param name Player's name
+     *
+     * @param name  Player's name
      * @param point Player's point
      */
     public Score(String name, int point) {
@@ -34,6 +35,7 @@ public class Score implements Serializable {
 
     /**
      * Returns the date of the Score
+     *
      * @return Date of the Score
      */
     public Date getDate() {
@@ -42,6 +44,7 @@ public class Score implements Serializable {
 
     /**
      * Returns the Points of the Score
+     *
      * @return Points of the Score
      */
     public int getPoint() {
@@ -50,7 +53,8 @@ public class Score implements Serializable {
 
     /**
      * Returns the player's name
-     * @return  Player's name
+     *
+     * @return Player's name
      */
     public String getName() {
         return name;

@@ -8,6 +8,7 @@ import java.util.Comparator;
 public class PointComparator implements Comparator<Score> {
     /**
      * Compares two Score
+     *
      * @param a First Score
      * @param b Second Score
      * @return Less, equal or more the a's value

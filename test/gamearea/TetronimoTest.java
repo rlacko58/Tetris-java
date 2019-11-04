@@ -1,9 +1,9 @@
 package gamearea;
 
-import gamearea.Tetronimo;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class TetronimoTest {
 

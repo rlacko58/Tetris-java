@@ -20,6 +20,7 @@ public class Tetronimo {
 
     /**
      * Creates the new gamearea.Tetronimo from the given shape type.
+     *
      * @param which gamearea.Tetronimo shape (I, J, L, O, S, T, Z)
      */
     Tetronimo(char which) {
@@ -28,6 +29,7 @@ public class Tetronimo {
 
     /**
      * Return the shape in a boolean matrix.
+     *
      * @return Shape in a boolean matrix
      */
     public boolean[][] getArray() {
@@ -36,6 +38,7 @@ public class Tetronimo {
 
     /**
      * Returns the size of the matrix ( size x size )
+     *
      * @return Size of the matrix ( size x size )
      */
     public int getSize() {
@@ -44,6 +47,7 @@ public class Tetronimo {
 
     /**
      * Returns the type of the gamearea.Tetronimo (I, J, L, O, S, T, Z)
+     *
      * @return Type of the gamearea.Tetronimo
      */
     public char getType() {
@@ -67,6 +71,7 @@ public class Tetronimo {
     /**
      * Return the Counterclockwise rotated shape.
      * Doesn't change the gamearea.Tetronimo.
+     *
      * @return Counterclockwise rotated shape
      */
     public boolean[][] getRotateLeft() {
@@ -76,6 +81,7 @@ public class Tetronimo {
     /**
      * Return the Clockwise rotated shape.
      * Doesn't change the gamearea.Tetronimo.
+     *
      * @return Clockwise rotated shape
      */
     public boolean[][] getRotateRight() {
@@ -84,6 +90,7 @@ public class Tetronimo {
 
     /**
      * Makes a copy of a given matrix.
+     *
      * @param arr Matrix to be copied
      * @return New copied matrix
      */
@@ -94,7 +101,8 @@ public class Tetronimo {
     /**
      * Rotates the given matrix and returns it.
      * If the direction is TRUE, then rotates clockwise, otherwise Counterclockwise.
-     * @param arr Matrix to be rotated
+     *
+     * @param arr       Matrix to be rotated
      * @param direction Direction of the rotation (clockwise / counterclockwise)
      * @return Rotated matrix
      */
@@ -122,10 +130,11 @@ public class Tetronimo {
     /**
      * Sets the gamearea.Tetronimo's shape and type.
      * It has every shapes matrix in a switch statement.
+     *
      * @param which Type of the tetronimo to be set
      */
     private void setTetro(char which) {
-        type=which;
+        type = which;
         switch (which) {
             case 'I':
                 t = new boolean[][]{

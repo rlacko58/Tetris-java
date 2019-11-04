@@ -1,4 +1,4 @@
-package main;
+package gamearea;
 
 import org.junit.jupiter.api.Test;
 

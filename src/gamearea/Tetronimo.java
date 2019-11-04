@@ -1,26 +1,26 @@
-package main;
+package gamearea;
 
 import java.util.Arrays;
 
 /**
- * Represents a main.Tetronimo in the game area.
- * Many main.Tetronimo can be in the game area.
+ * Represents a gamearea.Tetronimo in the game area.
+ * Many gamearea.Tetronimo can be in the game area.
  */
 public class Tetronimo {
     /**
-     * The matrix that stores the shape of a main.Tetronimo.
+     * The matrix that stores the shape of a gamearea.Tetronimo.
      * This will placed into the game area, can be rotated.
      */
     private boolean[][] t;
     /**
-     * Defines the type of the main.Tetronimo.
+     * Defines the type of the gamearea.Tetronimo.
      * We need it for its color.
      */
     private char type;
 
     /**
-     * Creates the new main.Tetronimo from the given shape type.
-     * @param which main.Tetronimo shape (I, J, L, O, S, T, Z)
+     * Creates the new gamearea.Tetronimo from the given shape type.
+     * @param which gamearea.Tetronimo shape (I, J, L, O, S, T, Z)
      */
     Tetronimo(char which) {
         setTetro(which);
@@ -43,8 +43,8 @@ public class Tetronimo {
     }
 
     /**
-     * Returns the type of the main.Tetronimo (I, J, L, O, S, T, Z)
-     * @return Type of the main.Tetronimo
+     * Returns the type of the gamearea.Tetronimo (I, J, L, O, S, T, Z)
+     * @return Type of the gamearea.Tetronimo
      */
     public char getType() {
         return type;
@@ -66,7 +66,7 @@ public class Tetronimo {
 
     /**
      * Return the Counterclockwise rotated shape.
-     * Doesn't change the main.Tetronimo.
+     * Doesn't change the gamearea.Tetronimo.
      * @return Counterclockwise rotated shape
      */
     public boolean[][] getRotateLeft() {
@@ -75,7 +75,7 @@ public class Tetronimo {
 
     /**
      * Return the Clockwise rotated shape.
-     * Doesn't change the main.Tetronimo.
+     * Doesn't change the gamearea.Tetronimo.
      * @return Clockwise rotated shape
      */
     public boolean[][] getRotateRight() {
@@ -120,7 +120,7 @@ public class Tetronimo {
     }
 
     /**
-     * Sets the main.Tetronimo's shape and type.
+     * Sets the gamearea.Tetronimo's shape and type.
      * It has every shapes matrix in a switch statement.
      * @param which Type of the tetronimo to be set
      */

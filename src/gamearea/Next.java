@@ -1,4 +1,4 @@
-package main;
+package gamearea;
 
 import java.util.LinkedList;
 

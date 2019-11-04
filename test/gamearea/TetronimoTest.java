@@ -1,5 +1,6 @@
-package main;
+package gamearea;
 
+import gamearea.Tetronimo;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

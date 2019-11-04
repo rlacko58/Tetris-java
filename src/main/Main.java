@@ -1,5 +1,7 @@
 package main;
 
+import gamearea.GameArea;
+
 public class Main {
     private static void printTetronimo(boolean[][] t) {
         for (int i = 0; i < t.length; i++) {
@@ -12,6 +14,6 @@ public class Main {
     }
 
     public static void main(String[] args) {
-
+        GameArea g= new GameArea(4, 5);
     }
 }

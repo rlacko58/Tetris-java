@@ -5,7 +5,7 @@ import java.util.LinkedList;
 /**
  * Stores the next Tetronimoes.
  */
-public class Pocket {
+public class Next {
     /**
      * List which stores the Tetronimoes.
      */
@@ -14,7 +14,7 @@ public class Pocket {
     /**
      * Initializes the Pocket with 3 Tetronimo.
      */
-    Pocket(){
+    Next(){
         t = new LinkedList<Tetronimo>();
         t.addLast(generateTetro());
         t.addLast(generateTetro());

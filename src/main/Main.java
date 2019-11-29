@@ -3,7 +3,6 @@ package main;
 import gamearea.GameArea;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -17,10 +16,10 @@ public class Main extends Application {
 
 
     public static GameArea gamearea;
+    public static ScreenController screenController;
 
     private static Pane squarePane;
     private static Scene scene;
-
 
 
     public static void main(String[] args) {
@@ -31,10 +30,20 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         initialize(height, width);
 
-        Parent root = FXMLLoader.load(getClass().getResource("playarea.fxml"));
+        scene = new Scene(new Pane(), 700, 500);
+
+        screenController = new ScreenController(scene);
+
+        screenController.addScreen("PlayArea", FXMLLoader.load(getClass().getResource("Playarea.fxml")));
+        screenController.addScreen("MainMenu", FXMLLoader.load(getClass().getResource("MainMenu.fxml")));
+        screenController.addScreen("ScoreBoard", FXMLLoader.load(getClass().getResource("ScoreBoard.fxml")));
+        screenController.activate("MainMenu");
+        screenController.activate("PlayArea");
+        screenController.activate("ScoreBoard");
+
 
         primaryStage.setTitle("asd");
-        primaryStage.setScene(new Scene(root, 300, 275));
+        primaryStage.setScene(scene);
         primaryStage.show();
     }
 

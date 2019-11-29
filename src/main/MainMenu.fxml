@@ -1,0 +1,16 @@
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.BorderPane?>
+
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.layout.ColumnConstraints?>
+
+
+<?import java.net.URL?>
+<StackPane xmlns:fx="http://javafx.com/fxml"
+           fx:controller="main.MainMenu"
+           prefWidth="400" prefHeight="600"
+           stylesheets="@MainMenu.css">
+
+
+</StackPane>

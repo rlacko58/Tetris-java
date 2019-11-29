@@ -1,19 +1,19 @@
 package main;
 
-import gamearea.ArrayListMatrix;
 import gamearea.GameArea;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
-import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
-import view.GamePlayArea;
-
-import java.util.ArrayList;
 
 public class Main extends Application {
+    public static final int SIZE = 30;
+    public static int XMAX;
+    public static int YMAX;
+    public static int height = 10;
+    public static int width = 20;
 
 
     public static GameArea gamearea;
@@ -23,24 +23,23 @@ public class Main extends Application {
 
 
 
+    public static void main(String[] args) {
+        launch(args);
+    }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        initialize(height, width);
 
-        GamePlayArea gpa = new GamePlayArea(10, 20, primaryStage);
+        Parent root = FXMLLoader.load(getClass().getResource("playarea.fxml"));
 
-        primaryStage.setTitle("Hello World");
+        primaryStage.setTitle("asd");
+        primaryStage.setScene(new Scene(root, 300, 275));
         primaryStage.show();
     }
 
-    private void drawRectangles(ArrayList<Rectangle> rect){
-        for(Rectangle rec: rect){
-            squarePane.getChildren().addAll(rec);
-        }
-    }
-
-
-    public static void main(String[] args) {
-        launch(args);
+    private void initialize(int height, int width){
+        YMAX = height * SIZE + height + 1;
+        XMAX = width * SIZE + width + 1;
     }
 }

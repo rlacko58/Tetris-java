@@ -1,0 +1,22 @@
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.BorderPane?>
+
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.layout.ColumnConstraints?>
+
+
+<?import java.net.URL?>
+<StackPane xmlns:fx="http://javafx.com/fxml"
+           fx:controller="main.PlayArea"
+           prefWidth="300" prefHeight="275"
+           stylesheets="@playArea.css">
+
+    <BorderPane styleClass="gameBoard" fx:id="gameBoard" >
+        <center>
+            <GridPane fx:id="gamePanel" hgap="1" vgap="1" alignment="TOP_CENTER">
+            </GridPane>
+        </center>
+    </BorderPane>
+
+</StackPane>

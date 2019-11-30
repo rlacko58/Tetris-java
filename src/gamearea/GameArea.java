@@ -8,7 +8,6 @@ import java.util.Timer;
 public class GameArea {
     Tetronimo hold;
     Next next;
-    HighScore hs;
     Tetronimo hand;
     Coord c;
     ArrayListMatrix area;
@@ -16,7 +15,6 @@ public class GameArea {
     public GameArea(int height, int width){
         hold = null;
         next = new Next();
-        hs = new HighScore(); //load from save
         hand = null;
         area = new ArrayListMatrix(height, width);
     }

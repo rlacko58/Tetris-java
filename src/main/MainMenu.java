@@ -1,5 +1,6 @@
 package main;
 
+import javafx.application.Platform;
 import javafx.fxml.Initializable;
 
 import java.net.URL;
@@ -9,5 +10,14 @@ public class MainMenu implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         
+    }
+
+    public void ActivateScoreBoard(){
+        Main.screenController.activate("ScoreBoard");
+    }
+
+    public void ExitGame(){
+        Platform.exit();
+        System.exit(0);
     }
 }

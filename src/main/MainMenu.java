@@ -15,6 +15,9 @@ public class MainMenu implements Initializable {
     public void ActivateScoreBoard(){
         Main.screenController.activate("ScoreBoard");
     }
+    public void ActivateGame(){
+        Main.screenController.activate("PlayArea");
+    }
 
     public void ExitGame(){
         Platform.exit();

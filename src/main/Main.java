@@ -13,8 +13,8 @@ public class Main extends Application {
     public static final int SIZE = 30;
     public static int XMAX;
     public static int YMAX;
-    public static int height = 10;
-    public static int width = 20;
+    public static int height = 25;
+    public static int width = 18;
 
     public static HighScore scoreTable;
 
@@ -39,15 +39,15 @@ public class Main extends Application {
         scoreTable.addScore(new Score("barack", 40));
         scoreTable.save();
 
-        scene = new Scene(new Pane(), 700, 500);
+        scene = new Scene(new Pane(), 1000, 800);
 
         screenController = new ScreenController(scene);
 
         screenController.addScreen("PlayArea", FXMLLoader.load(getClass().getResource("Playarea.fxml")));
         screenController.addScreen("MainMenu", FXMLLoader.load(getClass().getResource("MainMenu.fxml")));
         screenController.addScreen("ScoreBoard", FXMLLoader.load(getClass().getResource("ScoreBoard.fxml")));
-        screenController.activate("MainMenu");
-        //screenController.activate("PlayArea");
+        //screenController.activate("MainMenu");
+        screenController.activate("PlayArea");
         //screenController.activate("ScoreBoard");
 
 

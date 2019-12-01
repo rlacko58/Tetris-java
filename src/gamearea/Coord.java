@@ -9,4 +9,8 @@ public class Coord {
             x -= 1;
         }
     }
+    Coord(int x, int y, boolean a){
+        this.x = x;
+        this.y = y;
+    }
 }

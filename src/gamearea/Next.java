@@ -33,15 +33,14 @@ public class Next {
     }
 
     /**
-     * Returns the next 3 Tetronimoes type (I, J, L, ...)
+     * Returns the next 2 Tetronimoes type (I, J, L, ...)
      *
-     * @return Next 3 Tetronimoes type
+     * @return Next 2 Tetronimoes type
      */
     public char[] displayPocket() {
         return new char[]{
                 t.get(0).getType(),
-                t.get(1).getType(),
-                t.get(2).getType()
+                t.get(1).getType()
         };
     }
 

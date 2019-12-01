@@ -1,6 +1,5 @@
 package main;
 
-import gamearea.GameArea;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -18,12 +17,10 @@ public class Main extends Application {
 
     public static HighScore scoreTable;
 
-
-    public static GameArea gamearea;
     public static ScreenController screenController;
 
     private static Pane squarePane;
-    private static Scene scene;
+    public static Scene scene;
 
 
     public static void main(String[] args) {
@@ -61,4 +58,5 @@ public class Main extends Application {
         XMAX = width * SIZE + width + 1;
         scoreTable = new HighScore();
     }
+
 }

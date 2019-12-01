@@ -12,6 +12,16 @@ public class ArrayListMatrix extends ArrayList<ArrayList<Square>> {
             this.add(nLine);
         }
     }
+    ArrayListMatrix(ArrayListMatrix alm){
+        for(int i=0; i<alm.getHeight(); i++){
+            ArrayList<Square> nLine = new ArrayList<Square>();
+            for(int j=0; j<alm.getWidth(); j++){
+                nLine.add(new Square(alm.getSquare(i, j).type));
+            }
+            this.add(nLine);
+        }
+    }
+
     private ArrayList<Square> createLine(){
         ArrayList<Square> nLine = new ArrayList<Square>();
         for(int i=0; i<this.get(0).size(); i++){

@@ -31,7 +31,7 @@
                      <Font size="19.0" />
                   </font>
                </Text>
-               <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="10 X 20">
+               <Text fx:id="size" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="10 X 20">
                   <font>
                      <Font size="19.0" />
                   </font>
@@ -42,7 +42,7 @@
                      <Font size="19.0" />
                   </font>
                </Text>
-               <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="00:00" wrappingWidth="55.08251953125">
+               <Text fx:id="time" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="00:00" wrappingWidth="55.08251953125">
                   <font>
                      <Font size="19.0" />
                   </font>
@@ -54,7 +54,7 @@
                      <Font size="19.0" />
                   </font>
                </Text>
-               <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="000000">
+               <Text fx:id="points" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="000000">
                   <font>
                      <Font size="19.0" />
                   </font>
@@ -65,7 +65,7 @@
                      <Font size="19.0" />
                   </font>
                </Text>
-               <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="1">
+               <Text fx:id="level" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="1">
                   <font>
                      <Font size="19.0" />
                   </font>
@@ -76,7 +76,7 @@
                      <Font size="19.0" />
                   </font>
                </Text>
-               <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="0001">
+               <Text fx:id="lines" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="0001">
                   <font>
                      <Font size="19.0" />
                   </font>
@@ -96,16 +96,6 @@
                </GridPane>
                <GridPane fx:id="next2" alignment="CENTER">
                </GridPane>
-               <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
-                  <font>
-                     <Font size="19.0" />
-                  </font>
-               </Text>
-               <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Score Board">
-                  <font>
-                     <Font size="19.0" />
-                  </font>
-               </Text>
             </children>
          </VBox>
       </right>

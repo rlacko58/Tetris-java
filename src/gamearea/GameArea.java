@@ -16,6 +16,7 @@ public class GameArea {
     int points = 0;
     boolean canSwap;
     int lines = 0;
+    int level = 1;
 
     public GameArea(int height, int width){
         hold = null;
@@ -24,6 +25,14 @@ public class GameArea {
         area = new ArrayListMatrix(height, width);
         newHand();
         canSwap = true;
+    }
+
+    public int getLines(){
+        return lines;
+    }
+
+    public int getLevel(){
+        return level;
     }
 
     public void rotateLeft(){
@@ -63,16 +72,40 @@ public class GameArea {
     }
 
     public void placeHandToDown(){
-        Coord downCoord = getDownTetroCoord();
+        c = getDownTetroCoord();
         for(int i=0; i<hand.getSize(); i++){
             for(int j=0; j<hand.getSize(); j++){
                 if(hand.getArray()[i][j]){
-                    area.setSquare(j+downCoord.y, i+downCoord.x, hand.getType());
+                    area.setSquare(j+c.y, i+c.x, hand.getType());
                 }
             }
         }
 
+        afterPlace();
+    }
+
+    private void afterPlace(){
         points += 100;
+        for(int i=0; i<hand.getSize(); i++){
+            if(c.y+i<area.getHeight()){
+                fixLine(c.y+i);
+            }
+        }
+    }
+
+    private void fixLine(int num){
+        boolean gotcha = true;
+
+        for(int i=0; i<area.get(num).size(); i++){
+            if(!area.getSquare(num, i).val){
+                gotcha = false;
+            }
+        }
+        if(gotcha){
+            area.delLine(num);
+            lines += 1;
+            points += (int)level*0.2*area.getWidth()*100;
+        }
     }
 
     public int getPoints(){
@@ -87,7 +120,7 @@ public class GameArea {
                 }
             }
         }
-        points += 100;
+        afterPlace();
     }
 
     private boolean checkCollision(boolean[][] tetr, int x, int y){
@@ -120,10 +153,12 @@ public class GameArea {
     public void swapHold(){
         if(hold == null){
             hold = hand;
+            c = new Coord(area.getWidth(), area.getHeight());
             hand = next.getTetro();
         } else {
             if(canSwap){
                 Tetronimo tmp = hold;
+                c = new Coord(area.getWidth(), area.getHeight());
                 hold = hand;
                 hand = tmp;
                 canSwap = false;
@@ -146,10 +181,12 @@ public class GameArea {
     public ArrayListMatrix getMapwithHand(){
         ArrayListMatrix copyArea = new ArrayListMatrix(area);
         boolean[][] h = hand.getArray();
-        for(int i=0; i<hand.getSize(); i++){
-            for(int j=0; j<hand.getSize(); j++){
-                if(h[i][j]){
-                    copyArea.setSquare(j+c.y, i+c.x, hand.getType());
+        if(!checkCollision(hand.getArray(),c.x, c.y)){
+            for(int i=0; i<hand.getSize(); i++){
+                for(int j=0; j<hand.getSize(); j++){
+                    if(h[i][j]){
+                        copyArea.setSquare(j+c.y, i+c.x, hand.getType());
+                    }
                 }
             }
         }
@@ -167,8 +204,6 @@ public class GameArea {
     public Tetronimo getDownTetro(){
         return hand;
     }
-
-
 
     public Coord getCoord(){
         return c;

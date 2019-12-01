@@ -61,6 +61,8 @@ public class PlayArea implements Initializable {
 
         size.setText(Main.height + " X " + Main.width);
         points.setText(String.valueOf(gameArea.getPoints()));
+        lines.setText(String.valueOf(gameArea.getLines()));
+        level.setText(String.valueOf(gameArea.getLevel()));
 
         for(int i=0; i<Main.height; i++){
             ArrayList<Rectangle> line = new ArrayList<Rectangle>();
@@ -147,9 +149,6 @@ public class PlayArea implements Initializable {
         Tetronimo downTetro = gameArea.getDownTetro();
         Coord downCoord = gameArea.getDownTetroCoord();
 
-        points.setText(String.valueOf(gameArea.getPoints()));
-
-
         for(int i=0; i<map.getWidth(); i++){
             for(int j=0; j<map.getHeight(); j++){
                 if(map.getSquare(j, i).val){
@@ -168,6 +167,10 @@ public class PlayArea implements Initializable {
                 }
             }
         }
+
+        points.setText(String.valueOf(gameArea.getPoints()));
+        lines.setText(String.valueOf(gameArea.getLines()));
+        level.setText(String.valueOf(gameArea.getLevel()));
     }
 
     private void moveOnKeyPressed(){
@@ -183,10 +186,8 @@ public class PlayArea implements Initializable {
                         break;
                     case DOWN:
                         if(!gameArea.moveDown()){
-
                             if(!gameArea.newHand()){
-
-                                //TODO: GAME OVER
+                                endGame();
                             }
                             updateNexts();
                         }
@@ -198,7 +199,7 @@ public class PlayArea implements Initializable {
                         gameArea.placeHandToDown();
 
                         if(!gameArea.newHand()){
-                            //TODO: GAME OVER
+                            endGame();
                         }
                         updateNexts();
                         break;
@@ -209,6 +210,15 @@ public class PlayArea implements Initializable {
                         break;
                 }
                 updateMap();
+            }
+        });
+    }
+
+    private void endGame(){
+        Main.scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+                // disable
             }
         });
     }

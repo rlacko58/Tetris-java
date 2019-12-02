@@ -26,7 +26,7 @@ class NextTest {
     void displayPocket() {
         Next p = new Next();
         char[] c = new char[]{
-                p.t.get(0).getType(), p.t.get(1).getType(), p.t.get(2).getType()
+                p.t.get(0).getType(), p.t.get(1).getType()
         };
         assertArrayEquals(p.displayPocket(), c);
     }

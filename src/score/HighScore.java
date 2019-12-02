@@ -104,7 +104,7 @@ public class HighScore {
     }
 
     /**
-     * Saves the Scores to the given file.
+     * Saves the Scores to the given file. Creates a new if it doesn't exist.
      * If it can't it does nothing.
      */
     public void save() {

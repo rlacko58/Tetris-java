@@ -12,10 +12,10 @@ public class MainMenu implements Initializable {
         
     }
 
-    public void ActivateScoreBoard(){
+    public void ActivateScoreBoard() throws Exception {
         Main.screenController.activate("ScoreBoard");
     }
-    public void ActivateGame(){
+    public void ActivateGame() throws Exception {
         Main.screenController.activate("PlayArea");
     }
 

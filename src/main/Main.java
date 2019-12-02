@@ -7,6 +7,9 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import score.HighScore;
 import score.Score;
+import score.ScoreModel;
+
+import java.util.ArrayList;
 
 public class Main extends Application {
     public static final int SIZE = 30;
@@ -22,6 +25,7 @@ public class Main extends Application {
     private static Pane squarePane;
     public static Scene scene;
 
+    public static ArrayList<ScoreModel> rows;
 
     public static void main(String[] args) {
         launch(args);
@@ -31,20 +35,15 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         initialize(height, width);
 
-        scoreTable.load();
-        scoreTable.addScore(new Score("körte", 24));
-        scoreTable.addScore(new Score("barack", 40));
-        scoreTable.save();
-
         scene = new Scene(new Pane(), 1000, 800);
 
         screenController = new ScreenController(scene);
 
-        screenController.addScreen("PlayArea", FXMLLoader.load(getClass().getResource("Playarea.fxml")));
-        screenController.addScreen("MainMenu", FXMLLoader.load(getClass().getResource("MainMenu.fxml")));
-        screenController.addScreen("ScoreBoard", FXMLLoader.load(getClass().getResource("ScoreBoard.fxml")));
-        //screenController.activate("MainMenu");
-        screenController.activate("PlayArea");
+        screenController.addScreen("PlayArea", "Playarea.fxml");
+        screenController.addScreen("MainMenu", "MainMenu.fxml");
+        screenController.addScreen("ScoreBoard", "ScoreBoard.fxml");
+        screenController.activate("MainMenu");
+        //screenController.activate("PlayArea");
         //screenController.activate("ScoreBoard");
 
 

@@ -31,25 +31,26 @@ public class ScoreBoard implements Initializable {
 
     private ObservableList<ScoreModel> tableRows;
 
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        points.setCellValueFactory(new PropertyValueFactory<>("points"));
+        name.setCellValueFactory(new PropertyValueFactory<>("name"));
+        date.setCellValueFactory(new PropertyValueFactory<>("date"));
+        updateScoreTable();
+    }
+
+    public void updateScoreTable(){
         ArrayList<Score> scores = Main.scoreTable.getTopList("Point", 100);
         ArrayList<ScoreModel> rows = new ArrayList<ScoreModel>();
         for(Score s: scores){
             rows.add(new ScoreModel(s.getPoint(), s.getName(), s.getDate()));
         }
         tableRows = FXCollections.observableArrayList(rows);
-
-        points.setCellValueFactory(new PropertyValueFactory<>("points"));
-        name.setCellValueFactory(new PropertyValueFactory<>("name"));
-        date.setCellValueFactory(new PropertyValueFactory<>("date"));
-
         tbData.setItems(tableRows);
     }
 
 
-    public void ActivateMainMenu(){
+    public void ActivateMainMenu() throws Exception {
         Main.screenController.activate("MainMenu");
     }
 }

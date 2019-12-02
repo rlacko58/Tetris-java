@@ -20,6 +20,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import score.Score;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -50,8 +51,6 @@ public class PlayArea implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        System.out.println("Initializing the level...");
-
         gameArea = new GameArea(Main.height, Main.width);
 
         myMap = new ArrayList<ArrayList<Rectangle>>();
@@ -187,7 +186,11 @@ public class PlayArea implements Initializable {
                     case DOWN:
                         if(!gameArea.moveDown()){
                             if(!gameArea.newHand()){
-                                endGame();
+                                try {
+                                    endGame();
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
                             }
                             updateNexts();
                         }
@@ -199,7 +202,11 @@ public class PlayArea implements Initializable {
                         gameArea.placeHandToDown();
 
                         if(!gameArea.newHand()){
-                            endGame();
+                            try {
+                                endGame();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
                         }
                         updateNexts();
                         break;
@@ -214,13 +221,15 @@ public class PlayArea implements Initializable {
         });
     }
 
-    private void endGame(){
+    private void endGame() throws Exception {
         Main.scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
                 // disable
             }
         });
+        Main.scoreTable.addScore(new Score("anonymous", gameArea.getPoints()));
+        Main.screenController.activate("ScoreBoard");
     }
 
     public void updatePocket(){

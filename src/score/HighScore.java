@@ -45,6 +45,7 @@ public class HighScore {
      */
     public void addScore(Score s) {
         toplist.add(s);
+        save();
     }
 
     /**
@@ -93,7 +94,7 @@ public class HighScore {
      */
     public void load() {
         try {
-            ObjectInputStream is = new ObjectInputStream(new FileInputStream("files/" + fileName));
+            ObjectInputStream is = new ObjectInputStream(new FileInputStream(fileName));
             toplist = (ArrayList<Score>) is.readObject();
         } catch (IOException e) {
             save();

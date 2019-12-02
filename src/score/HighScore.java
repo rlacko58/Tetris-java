@@ -108,7 +108,9 @@ public class HighScore {
      */
     public void save() {
         try {
-            ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream("files/" + fileName));
+            File saveFile = new File(fileName);
+            saveFile.createNewFile(); // if file already exists will do nothing
+            ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(saveFile, false));
             os.writeObject(toplist);
         } catch (IOException e) {
             // do nothing

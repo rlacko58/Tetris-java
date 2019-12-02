@@ -5,6 +5,7 @@ import gamearea.Coord;
 import gamearea.GameArea;
 import gamearea.Tetronimo;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -25,6 +26,8 @@ import score.Score;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class PlayArea implements Initializable {
     public GameArea gameArea;
@@ -48,6 +51,9 @@ public class PlayArea implements Initializable {
     ArrayList<ArrayList<Rectangle>> myPocket;
     ArrayList<ArrayList<Rectangle>> myNext1;
     ArrayList<ArrayList<Rectangle>> myNext2;
+
+    int timecounter = 0;
+    int movecounter = 0;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -134,6 +140,50 @@ public class PlayArea implements Initializable {
         updateNexts();
         updateMap();
         moveOnKeyPressed();
+        Timer fall = new Timer();
+
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run() {
+                Platform.runLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        if(timecounter >= 100){
+                            gameArea.increaseTime();
+                            setTime(gameArea.getTime());
+                            timecounter = 0;
+                        }
+                        if(movecounter >= 100*Math.pow(0.9, gameArea.getLevel()-1)){
+                            if(!gameArea.moveDown()){
+                                if(!gameArea.newHand()){
+                                    try {
+                                        fall.cancel();
+                                        fall.purge();
+                                        endGame();
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                                updateNexts();
+                            }
+                            updateMap();
+                            movecounter = 0;
+                        }
+                        movecounter++;
+                        timecounter++;
+                    }
+                });
+            }
+        };
+        fall.schedule(task, 0, 10);
+    }
+
+    public void setTime(int time){
+        int seconds = gameArea.getTime()%60;
+        int minutes = (int)gameArea.getTime()/60;
+        this.time.setText(String.format("%1$" + 2 + "s", minutes).replace(' ', '0') + ":" + String.format("%1$" + 2 + "s", seconds).replace(' ', '0') );
+
+        updateMap();
     }
 
     public void updateNexts(){

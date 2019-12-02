@@ -49,6 +49,11 @@ public class GameArea {
     int level = 1;
 
     /**
+     * Time since start of the game in seconds
+     */
+    int time = 0;
+
+    /**
      * Initializes the map with the given sizes
      * @param height Number of Rows
      * @param width Number of Columns
@@ -85,6 +90,21 @@ public class GameArea {
             hand.RotateLeft();
         }
     }*/
+
+    /**
+     * Getter for time
+     * @return Current time
+     */
+    public int getTime() {
+        return time;
+    }
+
+    /**
+     * Increases by 1 the current time
+     */
+    public void increaseTime(){
+        time += 1;
+    }
 
     /**
      * Rotates the hand Tetronimo clockwise

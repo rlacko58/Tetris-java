@@ -5,7 +5,7 @@ package gamearea;
  */
 public class Coord {
     /**
-     * x and y coordinate
+     * coordinate
      */
     public int x, y;
 

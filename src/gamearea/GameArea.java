@@ -7,17 +7,52 @@ import score.Score;
 import java.util.ArrayList;
 import java.util.Timer;
 
+/**
+ * The class which contains everything on the map
+ */
 public class GameArea {
+    /**
+     * Tetronimo which is in the players pocket
+     */
     Tetronimo hold;
+    /**
+     * Next Tetronimos
+     */
     Next next;
+    /**
+     * Tetronimo that the player moves
+     */
     Tetronimo hand;
+    /**
+     * Coordinate of the hand in the map
+     */
     Coord c;
+    /**
+     * The matrix of the map
+     */
     ArrayListMatrix area;
+    /**
+     * Player's points
+     */
     int points = 0;
+    /**
+     * Is the player able to swap with the pocket's content
+     */
     boolean canSwap;
+    /**
+     * Number of full lines that got deleted
+     */
     int lines = 0;
+    /**
+     * Difficulty level
+     */
     int level = 1;
 
+    /**
+     * Initializes the map with the given sizes
+     * @param height Number of Rows
+     * @param width Number of Columns
+     */
     public GameArea(int height, int width){
         hold = null;
         next = new Next();
@@ -27,26 +62,43 @@ public class GameArea {
         canSwap = true;
     }
 
+    /**
+     * Returns the number of deleted lines
+     * @return Number of deleted lines
+     */
     public int getLines(){
         return lines;
     }
 
+    /**
+     * Returns the difficulty level
+     * @return Difficulty level
+     */
     public int getLevel(){
         return level;
     }
 
+    //rotateLeft currently is not being used
+    /*
     public void rotateLeft(){
         if(!checkCollision(hand.getRotateLeft(), c.x, c.y)){
             hand.RotateLeft();
         }
-    }
+    }*/
 
+    /**
+     * Rotates the hand Tetronimo clockwise
+     */
     public void rotateRight(){
         if(!checkCollision(hand.getRotateRight(), c.x, c.y)){
             hand.RotateRight();
         }
     }
 
+    /**
+     * Moves down the hand, if it doesn't move, returns with false
+     * @return Succesful move
+     */
     public boolean moveDown(){
         if(!checkCollision(hand.getArray(), c.x, c.y+1)){
             c.y = c.y+1;
@@ -56,6 +108,11 @@ public class GameArea {
             return false;
         }
     }
+
+    /**
+     * Moves the hand to the right
+     * @return Succesful move
+     */
     public boolean moveRight(){
         if(!checkCollision(hand.getArray(), c.x+1, c.y)){
             c.x = c.x+1;
@@ -63,6 +120,11 @@ public class GameArea {
         }
         return false;
     }
+
+    /**
+     * Moves the hand to the left
+     * @return Succesful move
+     */
     public boolean moveLeft(){
         if(!checkCollision(hand.getArray(), c.x-1, c.y)){
             c.x = c.x-1;
@@ -71,19 +133,17 @@ public class GameArea {
         return false;
     }
 
+    /**
+     * Places the hand Tetronimo to the lowest point possible (moves down the hand first)
+     */
     public void placeHandToDown(){
         c = getDownTetroCoord();
-        for(int i=0; i<hand.getSize(); i++){
-            for(int j=0; j<hand.getSize(); j++){
-                if(hand.getArray()[i][j]){
-                    area.setSquare(j+c.y, i+c.x, hand.getType());
-                }
-            }
-        }
-
-        afterPlace();
+        placeHandInToMap();
     }
 
+    /**
+     * After placing the hand checks lines and adds points
+     */
     private void afterPlace(){
         points += 100;
         for(int i=0; i<hand.getSize(); i++){
@@ -93,6 +153,10 @@ public class GameArea {
         }
     }
 
+    /**
+     * Deletes the line if possible and updates the lines and points
+     * @param num Line number
+     */
     private void fixLine(int num){
         boolean gotcha = true;
 
@@ -108,10 +172,17 @@ public class GameArea {
         }
     }
 
+    /**
+     * Returns the points of the player
+     * @return Current Points
+     */
     public int getPoints(){
         return points;
     }
 
+    /**
+     * Places the hand Tetronimo to the map
+     */
     private void placeHandInToMap(){
         for(int i=0; i<hand.getSize(); i++){
             for(int j=0; j<hand.getSize(); j++){
@@ -123,6 +194,13 @@ public class GameArea {
         afterPlace();
     }
 
+    /**
+     * Check collision in the map with the given boolean matrix of the Tetronimo
+     * @param tetr boolean matrix
+     * @param x Column number
+     * @param y Row number
+     * @return true if there is collision
+     */
     private boolean checkCollision(boolean[][] tetr, int x, int y){
         for(int i=0; i<tetr.length; i++){
             for(int j=0; j<tetr.length; j++){
@@ -139,6 +217,10 @@ public class GameArea {
         return false;
     }
 
+    /**
+     * Puts a new hand to the map. If there is collision returns with false
+     * @return Succesful hand generation
+     */
     public boolean newHand(){
         hand = next.getTetro();
         c = new Coord(area.getWidth(), hand.getSize());
@@ -150,6 +232,9 @@ public class GameArea {
         }
     }
 
+    /**
+     * Swaps the hand with hold (puts to the pocket)
+     */
     public void swapHold(){
         if(hold == null){
             hold = hand;
@@ -166,6 +251,10 @@ public class GameArea {
         }
     }
 
+    /**
+     * Returns the next two tetronimo
+     * @return The next two tetronimo
+     */
     public Tetronimo[] getNexts(){
         char[] nexts = next.displayPocket();
         return new Tetronimo[]{
@@ -174,10 +263,18 @@ public class GameArea {
         };
     }
 
+    /**
+     * Returns the pocket
+     * @return The pocket
+     */
     public Tetronimo getPocket(){
         return hold;
     }
 
+    /**
+     * Returns a full map with hand for the graphics
+     * @return ArrayListMatrix copy of the map with the hand in it
+     */
     public ArrayListMatrix getMapwithHand(){
         ArrayListMatrix copyArea = new ArrayListMatrix(area);
         boolean[][] h = hand.getArray();
@@ -193,6 +290,10 @@ public class GameArea {
         return copyArea;
     }
 
+    /**
+     * Returns the lowest coordinate for the hand
+     * @return Lowest coordinate for the hand
+     */
     public Coord getDownTetroCoord(){
         int newY = c.y;
         while(!checkCollision(hand.getArray(), c.x, newY+1)){
@@ -201,10 +302,18 @@ public class GameArea {
         return new Coord(c.x, newY, true);
     }
 
+    /**
+     * Returns the hand
+     * @return hand
+     */
     public Tetronimo getDownTetro(){
         return hand;
     }
 
+    /**
+     * Returns the hand's coordinate
+     * @return coordinate
+     */
     public Coord getCoord(){
         return c;
     }

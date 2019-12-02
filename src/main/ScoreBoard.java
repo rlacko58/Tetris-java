@@ -16,21 +16,41 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+/**
+ * ScoreTable scene's JavaFX controller
+ */
 public class ScoreBoard implements Initializable {
-    public TableView scoreTable;
-    //points name date tbData
-
+    /**
+     * Table data
+     */
     @FXML
     private TableView<ScoreModel> tbData;
+    /**
+     * Points column
+     */
     @FXML
     public TableColumn<ScoreModel, Integer> points;
+    /**
+     * Name column
+     */
     @FXML
     public TableColumn<ScoreModel, String> name;
+    /**
+     * Date column
+     */
     @FXML
     public TableColumn<ScoreModel, String> date;
 
+    /**
+     * Each row
+     */
     private ObservableList<ScoreModel> tableRows;
 
+    /**
+     * Initialize the table
+     * @param location javafx parameter
+     * @param resources javafx parameter
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         points.setCellValueFactory(new PropertyValueFactory<>("points"));
@@ -39,7 +59,10 @@ public class ScoreBoard implements Initializable {
         updateScoreTable();
     }
 
-    public void updateScoreTable(){
+    /**
+     * Updates the rows in the table
+     */
+    public void updateScoreTable() {
         ArrayList<Score> scores = Main.scoreTable.getTopList("Point", 100);
         ArrayList<ScoreModel> rows = new ArrayList<ScoreModel>();
         for(Score s: scores){
@@ -49,8 +72,10 @@ public class ScoreBoard implements Initializable {
         tbData.setItems(tableRows);
     }
 
-
-    public void ActivateMainMenu() throws Exception {
+    /**
+     * Swaps to the main menu
+     */
+    public void ActivateMainMenu() {
         Main.screenController.activate("MainMenu");
     }
 }

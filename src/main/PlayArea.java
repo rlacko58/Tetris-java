@@ -29,32 +29,90 @@ import java.util.ResourceBundle;
 import java.util.Timer;
 import java.util.TimerTask;
 
+
+/**
+ * PlayArea scene's JavaFX controller
+ */
 public class PlayArea implements Initializable {
+    /**
+     * The gameArea which contains the logic of the game
+     */
     public GameArea gameArea;
 
+    /**
+     * Gridpane for the gamePanel
+     */
     public GridPane gamePanel;
+    /**
+     * Gridpane for the pocket
+     */
     public GridPane pocket;
+    /**
+     * Gridpane for the next tetronimo
+     */
     public GridPane next1;
+    /**
+     * Gridpane for the second next tetronimo
+     */
     public GridPane next2;
-    public BorderPane gameBoard;
 
+    /**
+     * Text for displaying the gamearea's size
+     */
     public Text size;
+    /**
+     * Text for displaying the time
+     */
     public Text time;
+    /**
+     * Text for displaying the points
+     */
     public Text points;
+    /**
+     * Text for displaying the level
+     */
     public Text level;
+    /**
+     * Text for displaying the full lines deleted
+     */
     public Text lines;
 
-
+    /**
+     * Size of the Rectangle's
+     */
     private int SIZE = Main.SIZE;
 
+    /**
+     * Matrix for the map rectangles
+     */
     ArrayList<ArrayList<Rectangle>> myMap;
+    /**
+     * Matrix for the pocket rectangles
+     */
     ArrayList<ArrayList<Rectangle>> myPocket;
+    /**
+     * Matrix for the next1 rectangles
+     */
     ArrayList<ArrayList<Rectangle>> myNext1;
+    /**
+     * Matrix for the next2 rectangles
+     */
     ArrayList<ArrayList<Rectangle>> myNext2;
 
+    /**
+     * Variable for the timer
+     */
     int timecounter = 0;
+    /**
+     * Variable for the fall speed
+     */
     int movecounter = 0;
 
+    /**
+     * Initializes the map and starts the movement and timer
+     * @param location javafx parameter
+     * @param resources javafx parameter
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         gameArea = new GameArea(Main.height, Main.width);
@@ -178,6 +236,10 @@ public class PlayArea implements Initializable {
         fall.schedule(task, 0, 10);
     }
 
+    /**
+     * Updates the clock
+     * @param time time in seconds
+     */
     public void setTime(int time){
         int seconds = gameArea.getTime()%60;
         int minutes = (int)gameArea.getTime()/60;
@@ -186,12 +248,18 @@ public class PlayArea implements Initializable {
         updateMap();
     }
 
+    /**
+     * Updates the next tetronimos
+     */
     public void updateNexts(){
         Tetronimo[] nexts = gameArea.getNexts();
         updateArea(myNext1, nexts[0], 0, 0);
         updateArea(myNext2, nexts[1], 0, 0);
     }
 
+    /**
+     * Updates the map
+     */
     public void updateMap(){
         ArrayListMatrix map = gameArea.getMapwithHand();
 
@@ -222,6 +290,9 @@ public class PlayArea implements Initializable {
         level.setText(String.valueOf(gameArea.getLevel()));
     }
 
+    /**
+     * Key events
+     */
     private void moveOnKeyPressed(){
         Main.scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
@@ -271,7 +342,10 @@ public class PlayArea implements Initializable {
         });
     }
 
-    private void endGame() throws Exception {
+    /**
+     * Ends the game, saves the score and swaps scene to the ScoreBoard
+     */
+    private void endGame() {
         Main.scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
@@ -282,11 +356,21 @@ public class PlayArea implements Initializable {
         Main.screenController.activate("ScoreBoard");
     }
 
+    /**
+     * Updates the pocket
+     */
     public void updatePocket(){
         updateArea(myPocket, gameArea.getPocket(), 0, 0);
     }
 
 
+    /**
+     * Updates a given area in the rectangle matrix
+     * @param array Matrix of rectangles
+     * @param tetr Tetronimo
+     * @param x Column number
+     * @param y Row number
+     */
     public void updateArea(ArrayList<ArrayList<Rectangle>> array, Tetronimo tetr, int x, int y){
         boolean[][] area = tetr.getArray();
 
@@ -305,6 +389,12 @@ public class PlayArea implements Initializable {
         }
     }
 
+    /**
+     * Converts the Tetronimo type to a color
+     * @param type Tetronimo type
+     * @param opacity Opacity
+     * @return Color in RGB
+     */
     public Color convertToColor(char type, double opacity) {
         switch (type) {
             case 'I':

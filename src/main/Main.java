@@ -11,29 +11,52 @@ import score.ScoreModel;
 
 import java.util.ArrayList;
 
+/**
+ * Initializes the map and starts the game
+ */
 public class Main extends Application {
+    /**
+     * Size of the squares
+     */
     public static final int SIZE = 30;
-    public static int XMAX;
-    public static int YMAX;
+    /**
+     * Height of the map
+     */
     public static int height = 25;
+    /**
+     * Width of the map
+     */
     public static int width = 18;
 
+    /**
+     * Highscores
+     */
     public static HighScore scoreTable;
 
+    /**
+     * ScreenController for swapping scenes
+     */
     public static ScreenController screenController;
-
-    private static Pane squarePane;
+    /**
+     * Scene for the game
+     */
     public static Scene scene;
 
-    public static ArrayList<ScoreModel> rows;
-
+    /**
+     * Calls JavaFX's default launch method
+     * @param args
+     */
     public static void main(String[] args) {
         launch(args);
     }
 
+    /**
+     * Initializes the scoreTable and scenes and starts the application
+     * @param primaryStage javafx parameter
+     */
     @Override
-    public void start(Stage primaryStage) throws Exception {
-        initialize(height, width);
+    public void start(Stage primaryStage) {
+        scoreTable = new HighScore();
 
         scene = new Scene(new Pane(), 1000, 800);
 
@@ -43,19 +66,10 @@ public class Main extends Application {
         screenController.addScreen("MainMenu", "MainMenu.fxml");
         screenController.addScreen("ScoreBoard", "ScoreBoard.fxml");
         screenController.activate("MainMenu");
-        //screenController.activate("PlayArea");
-        //screenController.activate("ScoreBoard");
-
 
         primaryStage.setTitle("Tetris Game");
         primaryStage.setScene(scene);
         primaryStage.show();
-    }
-
-    private void initialize(int height, int width){
-        YMAX = height * SIZE + height + 1;
-        XMAX = width * SIZE + width + 1;
-        scoreTable = new HighScore();
     }
 
 }

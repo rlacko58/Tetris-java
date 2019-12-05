@@ -26,9 +26,10 @@ public class ScoreModel {
 
     /**
      * Constructor with the initial values
+     *
      * @param points New Points
-     * @param name Name of the player
-     * @param date Date of the score
+     * @param name   Name of the player
+     * @param date   Date of the score
      */
     public ScoreModel(Integer points, String name, Date date) {
         DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm");
@@ -40,6 +41,7 @@ public class ScoreModel {
 
     /**
      * Getter for name
+     *
      * @return name
      */
     public String getName() {
@@ -48,6 +50,7 @@ public class ScoreModel {
 
     /**
      * Setter for name
+     *
      * @param name New name
      */
     public void setName(String name) {
@@ -55,7 +58,18 @@ public class ScoreModel {
     }
 
     /**
+     * Setter for date. Converts to String
+     *
+     * @param date New dates
+     */
+    public void setName(Date date) {
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm");
+        this.date = new SimpleStringProperty(dateFormat.format(date));
+    }
+
+    /**
      * Getter for points
+     *
      * @return points
      */
     public int getPoints() {
@@ -64,6 +78,7 @@ public class ScoreModel {
 
     /**
      * Setter for points
+     *
      * @param points New points
      */
     public void setPoints(int points) {
@@ -72,18 +87,10 @@ public class ScoreModel {
 
     /**
      * Getter for date
+     *
      * @return Date in string
      */
     public String getDate() {
         return date.get();
-    }
-
-    /**
-     * Setter for date. Converts to String
-     * @param date New dates
-     */
-    public void setName(Date date) {
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm");
-        this.date = new SimpleStringProperty(dateFormat.format(date));
     }
 }

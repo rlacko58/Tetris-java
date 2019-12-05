@@ -16,29 +16,27 @@ public class Square {
     /**
      * Initial Square without tetronimo
      */
-    Square(){
+    Square() {
         val = false;
         type = 'N';
     }
 
     /**
      * Initializes with a type
+     *
      * @param type Type of the tetronimo
      */
-    Square(char type){
-        if(type == 'N'){
-            this.val = false;
-        }else {
-            this.val = true;
-        }
+    Square(char type) {
+        this.val = type != 'N';
         this.type = type;
     }
 
     /**
      * sets a new type
+     *
      * @param type New type of the square
      */
-    public void set(char type){
+    public void set(char type) {
         this.type = type;
         this.val = true;
     }

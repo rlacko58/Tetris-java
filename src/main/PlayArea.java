@@ -4,23 +4,14 @@ import gamearea.ArrayListMatrix;
 import gamearea.Coord;
 import gamearea.GameArea;
 import gamearea.Tetronimo;
-import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.HPos;
-import javafx.geometry.Pos;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 import score.Score;
 
 import java.net.URL;
@@ -76,12 +67,6 @@ public class PlayArea implements Initializable {
      * Text for displaying the full lines deleted
      */
     public Text lines;
-
-    /**
-     * Size of the Rectangle's
-     */
-    private int SIZE = Main.SIZE;
-
     /**
      * Matrix for the map rectangles
      */
@@ -98,7 +83,6 @@ public class PlayArea implements Initializable {
      * Matrix for the next2 rectangles
      */
     ArrayList<ArrayList<Rectangle>> myNext2;
-
     /**
      * Variable for the timer
      */
@@ -107,10 +91,15 @@ public class PlayArea implements Initializable {
      * Variable for the fall speed
      */
     int movecounter = 0;
+    /**
+     * Size of the Rectangle's
+     */
+    private int SIZE = Main.SIZE;
 
     /**
      * Initializes the map and starts the movement and timer
-     * @param location javafx parameter
+     *
+     * @param location  javafx parameter
      * @param resources javafx parameter
      */
     @Override
@@ -127,14 +116,14 @@ public class PlayArea implements Initializable {
         lines.setText(String.valueOf(gameArea.getLines()));
         level.setText(String.valueOf(gameArea.getLevel()));
 
-        for(int i=0; i<Main.height; i++){
+        for (int i = 0; i < Main.height; i++) {
             ArrayList<Rectangle> line = new ArrayList<Rectangle>();
-            for(int j=0; j<Main.width; j++){
+            for (int j = 0; j < Main.width; j++) {
                 Rectangle rec = new Rectangle();
                 rec.setWidth(SIZE);
                 rec.setHeight(SIZE);
                 rec.setFill(Color.BLACK);
-                rec.setStroke(Color.rgb(0,0,255, 0.5));
+                rec.setStroke(Color.rgb(0, 0, 255, 0.5));
                 GridPane.setColumnIndex(rec, j);
                 GridPane.setRowIndex(rec, i);
 
@@ -144,14 +133,14 @@ public class PlayArea implements Initializable {
             myMap.add(line);
         }
 
-        for(int i=0; i<4; i++){
+        for (int i = 0; i < 4; i++) {
             ArrayList<Rectangle> line = new ArrayList<Rectangle>();
-            for(int j=0; j<4; j++){
+            for (int j = 0; j < 4; j++) {
                 Rectangle rec = new Rectangle();
                 rec.setWidth(SIZE);
                 rec.setHeight(SIZE);
                 rec.setFill(Color.BLACK);
-                rec.setStroke(Color.rgb(0,0,255, 0.5));
+                rec.setStroke(Color.rgb(0, 0, 255, 0.5));
                 GridPane.setColumnIndex(rec, j);
                 GridPane.setRowIndex(rec, i);
 
@@ -161,14 +150,14 @@ public class PlayArea implements Initializable {
             myPocket.add(line);
         }
 
-        for(int i=0; i<4; i++){
+        for (int i = 0; i < 4; i++) {
             ArrayList<Rectangle> line = new ArrayList<Rectangle>();
-            for(int j=0; j<4; j++){
+            for (int j = 0; j < 4; j++) {
                 Rectangle rec = new Rectangle();
                 rec.setWidth(SIZE);
                 rec.setHeight(SIZE);
                 rec.setFill(Color.BLACK);
-                rec.setStroke(Color.rgb(0,0,255, 0.5));
+                rec.setStroke(Color.rgb(0, 0, 255, 0.5));
                 GridPane.setColumnIndex(rec, j);
                 GridPane.setRowIndex(rec, i);
 
@@ -178,14 +167,14 @@ public class PlayArea implements Initializable {
             myNext1.add(line);
         }
 
-        for(int i=0; i<4; i++){
+        for (int i = 0; i < 4; i++) {
             ArrayList<Rectangle> line = new ArrayList<Rectangle>();
-            for(int j=0; j<4; j++){
+            for (int j = 0; j < 4; j++) {
                 Rectangle rec = new Rectangle();
                 rec.setWidth(SIZE);
                 rec.setHeight(SIZE);
                 rec.setFill(Color.BLACK);
-                rec.setStroke(Color.rgb(0,0,255, 0.5));
+                rec.setStroke(Color.rgb(0, 0, 255, 0.5));
                 GridPane.setColumnIndex(rec, j);
                 GridPane.setRowIndex(rec, i);
 
@@ -206,14 +195,14 @@ public class PlayArea implements Initializable {
                 Platform.runLater(new Runnable() {
                     @Override
                     public void run() {
-                        if(timecounter >= 100){
+                        if (timecounter >= 100) {
                             gameArea.increaseTime();
                             setTime(gameArea.getTime());
                             timecounter = 0;
                         }
-                        if(movecounter >= 100*Math.pow(0.9, gameArea.getLevel()-1)){
-                            if(!gameArea.moveDown()){
-                                if(!gameArea.newHand()){
+                        if (movecounter >= 100 * Math.pow(0.9, gameArea.getLevel() - 1)) {
+                            if (!gameArea.moveDown()) {
+                                if (!gameArea.newHand()) {
                                     try {
                                         fall.cancel();
                                         fall.purge();
@@ -238,12 +227,13 @@ public class PlayArea implements Initializable {
 
     /**
      * Updates the clock
+     *
      * @param time time in seconds
      */
-    public void setTime(int time){
-        int seconds = gameArea.getTime()%60;
-        int minutes = (int)gameArea.getTime()/60;
-        this.time.setText(String.format("%1$" + 2 + "s", minutes).replace(' ', '0') + ":" + String.format("%1$" + 2 + "s", seconds).replace(' ', '0') );
+    public void setTime(int time) {
+        int seconds = gameArea.getTime() % 60;
+        int minutes = gameArea.getTime() / 60;
+        this.time.setText(String.format("%1$" + 2 + "s", minutes).replace(' ', '0') + ":" + String.format("%1$" + 2 + "s", seconds).replace(' ', '0'));
 
         updateMap();
     }
@@ -251,7 +241,7 @@ public class PlayArea implements Initializable {
     /**
      * Updates the next tetronimos
      */
-    public void updateNexts(){
+    public void updateNexts() {
         Tetronimo[] nexts = gameArea.getNexts();
         updateArea(myNext1, nexts[0], 0, 0);
         updateArea(myNext2, nexts[1], 0, 0);
@@ -260,25 +250,25 @@ public class PlayArea implements Initializable {
     /**
      * Updates the map
      */
-    public void updateMap(){
+    public void updateMap() {
         ArrayListMatrix map = gameArea.getMapwithHand();
 
         Tetronimo downTetro = gameArea.getDownTetro();
         Coord downCoord = gameArea.getDownTetroCoord();
 
-        for(int i=0; i<map.getWidth(); i++){
-            for(int j=0; j<map.getHeight(); j++){
-                if(map.getSquare(j, i).val){
+        for (int i = 0; i < map.getWidth(); i++) {
+            for (int j = 0; j < map.getHeight(); j++) {
+                if (map.getSquare(j, i).val) {
                     myMap.get(j).get(i).setFill(convertToColor(map.getSquare(j, i).type, 1));
                 } else {
-                    if(i < downCoord.x+downTetro.getSize() && i >= downCoord.x
-                            && j < downCoord.y+downTetro.getSize() && j >= downCoord.y){
-                        if(downTetro.getArray()[i-downCoord.x][j-downCoord.y]){
+                    if (i < downCoord.x + downTetro.getSize() && i >= downCoord.x
+                            && j < downCoord.y + downTetro.getSize() && j >= downCoord.y) {
+                        if (downTetro.getArray()[i - downCoord.x][j - downCoord.y]) {
                             myMap.get(j).get(i).setFill(convertToColor(downTetro.getType(), 0.5));
-                        }else{
+                        } else {
                             myMap.get(j).get(i).setFill(Color.BLACK);
                         }
-                    }else{
+                    } else {
                         myMap.get(j).get(i).setFill(Color.BLACK);
                     }
                 }
@@ -293,7 +283,7 @@ public class PlayArea implements Initializable {
     /**
      * Key events
      */
-    private void moveOnKeyPressed(){
+    private void moveOnKeyPressed() {
         Main.scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
@@ -305,8 +295,8 @@ public class PlayArea implements Initializable {
                         gameArea.moveLeft();
                         break;
                     case DOWN:
-                        if(!gameArea.moveDown()){
-                            if(!gameArea.newHand()){
+                        if (!gameArea.moveDown()) {
+                            if (!gameArea.newHand()) {
                                 try {
                                     endGame();
                                 } catch (Exception e) {
@@ -322,7 +312,7 @@ public class PlayArea implements Initializable {
                     case SPACE:
                         gameArea.placeHandToDown();
 
-                        if(!gameArea.newHand()){
+                        if (!gameArea.newHand()) {
                             try {
                                 endGame();
                             } catch (Exception e) {
@@ -359,30 +349,31 @@ public class PlayArea implements Initializable {
     /**
      * Updates the pocket
      */
-    public void updatePocket(){
+    public void updatePocket() {
         updateArea(myPocket, gameArea.getPocket(), 0, 0);
     }
 
 
     /**
      * Updates a given area in the rectangle matrix
+     *
      * @param array Matrix of rectangles
-     * @param tetr Tetronimo
-     * @param x Column number
-     * @param y Row number
+     * @param tetr  Tetronimo
+     * @param x     Column number
+     * @param y     Row number
      */
-    public void updateArea(ArrayList<ArrayList<Rectangle>> array, Tetronimo tetr, int x, int y){
+    public void updateArea(ArrayList<ArrayList<Rectangle>> array, Tetronimo tetr, int x, int y) {
         boolean[][] area = tetr.getArray();
 
-        for(int i=0; i<array.size(); i++){
-            for(int j=0; j<array.get(i).size(); j++){
-                if(i<tetr.getSize() && j<tetr.getSize()){
-                    if(area[i][j]){
-                        array.get(i+x).get(j+y).setFill(convertToColor(tetr.getType(), 1));
+        for (int i = 0; i < array.size(); i++) {
+            for (int j = 0; j < array.get(i).size(); j++) {
+                if (i < tetr.getSize() && j < tetr.getSize()) {
+                    if (area[i][j]) {
+                        array.get(i + x).get(j + y).setFill(convertToColor(tetr.getType(), 1));
                     } else {
                         array.get(i + x).get(j + y).setFill(Color.BLACK);
                     }
-                } else{
+                } else {
                     array.get(i + x).get(j + y).setFill(Color.BLACK);
                 }
             }
@@ -391,7 +382,8 @@ public class PlayArea implements Initializable {
 
     /**
      * Converts the Tetronimo type to a color
-     * @param type Tetronimo type
+     *
+     * @param type    Tetronimo type
      * @param opacity Opacity
      * @return Color in RGB
      */

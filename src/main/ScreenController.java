@@ -2,7 +2,6 @@ package main;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -22,6 +21,7 @@ public class ScreenController {
 
     /**
      * Sets the scene to the given
+     *
      * @param main New scene to set
      */
     public ScreenController(Scene main) {
@@ -30,23 +30,26 @@ public class ScreenController {
 
     /**
      * Adds a new FXML path
+     *
      * @param name FXML path short name
      * @param pane path
      */
-    protected void addScreen(String name, String pane){
+    protected void addScreen(String name, String pane) {
         screenMap.put(name, pane);
     }
 
     /**
      * Removes an FXML path by it's name
+     *
      * @param name Name of scene
      */
-    protected void removeScreen(String name){
+    protected void removeScreen(String name) {
         screenMap.remove(name);
     }
 
     /**
      * Swaps the scene. In case of IOException, throws an error.
+     *
      * @param name Name of the FXML path
      */
     protected void activate(String name) {

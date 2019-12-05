@@ -12,7 +12,8 @@ import java.util.ResourceBundle;
 public class MainMenu implements Initializable {
     /**
      * It does nothing
-     * @param location javafx parameter
+     *
+     * @param location  javafx parameter
      * @param resources javafx parameter
      */
     @Override
@@ -37,7 +38,7 @@ public class MainMenu implements Initializable {
     /**
      * Exits the game
      */
-    public void ExitGame(){
+    public void ExitGame() {
         Platform.exit();
         System.exit(0);
     }

@@ -11,24 +11,26 @@ public class Coord {
 
     /**
      * Constructor which creates the default coordinates of the Tetronimo in the map
+     *
      * @param width Width of the map
-     * @param size Size of the Tetronimo
+     * @param size  Size of the Tetronimo
      */
-    Coord(int width, int size){
+    Coord(int width, int size) {
         y = 0;
-        x = (int)width/2 - 1; //rounds down
-        if( size == 4){
+        x = width / 2 - 1; //rounds down
+        if (size == 4) {
             x -= 1;
         }
     }
 
     /**
      * Constructor which sets the coordinates to the given x and y
+     *
      * @param x Column number
      * @param y Row number
      * @param a placeholder
      */
-    Coord(int x, int y, boolean a){
+    Coord(int x, int y, boolean a) {
         this.x = x;
         this.y = y;
     }

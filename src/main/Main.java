@@ -1,15 +1,10 @@
 package main;
 
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import score.HighScore;
-import score.Score;
-import score.ScoreModel;
-
-import java.util.ArrayList;
 
 /**
  * Initializes the map and starts the game
@@ -44,6 +39,7 @@ public class Main extends Application {
 
     /**
      * Calls JavaFX's default launch method
+     *
      * @param args
      */
     public static void main(String[] args) {
@@ -52,6 +48,7 @@ public class Main extends Application {
 
     /**
      * Initializes the scoreTable and scenes and starts the application
+     *
      * @param primaryStage javafx parameter
      */
     @Override

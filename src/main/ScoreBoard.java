@@ -1,6 +1,5 @@
 package main;
 
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -11,7 +10,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import score.Score;
 import score.ScoreModel;
 
-import java.lang.reflect.Array;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -20,11 +18,6 @@ import java.util.ResourceBundle;
  * ScoreTable scene's JavaFX controller
  */
 public class ScoreBoard implements Initializable {
-    /**
-     * Table data
-     */
-    @FXML
-    private TableView<ScoreModel> tbData;
     /**
      * Points column
      */
@@ -40,7 +33,11 @@ public class ScoreBoard implements Initializable {
      */
     @FXML
     public TableColumn<ScoreModel, String> date;
-
+    /**
+     * Table data
+     */
+    @FXML
+    private TableView<ScoreModel> tbData;
     /**
      * Each row
      */
@@ -48,7 +45,8 @@ public class ScoreBoard implements Initializable {
 
     /**
      * Initialize the table
-     * @param location javafx parameter
+     *
+     * @param location  javafx parameter
      * @param resources javafx parameter
      */
     @Override
@@ -65,7 +63,7 @@ public class ScoreBoard implements Initializable {
     public void updateScoreTable() {
         ArrayList<Score> scores = Main.scoreTable.getTopList("Point", 100);
         ArrayList<ScoreModel> rows = new ArrayList<ScoreModel>();
-        for(Score s: scores){
+        for (Score s : scores) {
             rows.add(new ScoreModel(s.getPoint(), s.getName(), s.getDate()));
         }
         tableRows = FXCollections.observableArrayList(rows);

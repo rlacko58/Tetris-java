@@ -7,28 +7,30 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
-
-<StackPane prefHeight="800" prefWidth="1000" stylesheets="@MainMenu.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.231" fx:controller="main.MainMenu">
-   <children>
-      <BorderPane prefHeight="200.0" prefWidth="200.0">
-         <center>
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0" BorderPane.alignment="CENTER">
-               <children>
-                  <Text fill="WHITE" stroke="#0a0a0a" strokeType="OUTSIDE" strokeWidth="4.0" text="Tetris Game" textAlignment="CENTER">
-                     <font>
-                        <Font size="45.0" />
-                     </font>
-                  </Text>
-                  <Button mnemonicParsing="false" text="New Game" onAction="#ActivateGame"/>
-                  <Button mnemonicParsing="false" text="HighScore" onAction="#ActivateScoreBoard"/>
-                  <Button mnemonicParsing="false" text="Exit" onAction="#ExitGame"/>
-               </children>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-            </VBox>
-         </center>
-      </BorderPane>
-   </children>
+<StackPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="800" prefWidth="1000" stylesheets="@MainMenu.css"
+           xmlns="http://javafx.com/javafx/8.0.231" fx:controller="main.MainMenu">
+    <children>
+        <BorderPane prefHeight="200.0" prefWidth="200.0">
+            <center>
+                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0"
+                      BorderPane.alignment="CENTER">
+                    <children>
+                        <Text fill="WHITE" stroke="#0a0a0a" strokeType="OUTSIDE" strokeWidth="4.0" text="Tetris Game"
+                              textAlignment="CENTER">
+                            <font>
+                                <Font size="45.0"/>
+                            </font>
+                        </Text>
+                        <Button mnemonicParsing="false" text="New Game" onAction="#ActivateGame"/>
+                        <Button mnemonicParsing="false" text="HighScore" onAction="#ActivateScoreBoard"/>
+                        <Button mnemonicParsing="false" text="Exit" onAction="#ExitGame"/>
+                    </children>
+                    <opaqueInsets>
+                        <Insets/>
+                    </opaqueInsets>
+                </VBox>
+            </center>
+        </BorderPane>
+    </children>
 
 </StackPane>

@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
-
-<StackPane prefHeight="800" prefWidth="1000" stylesheets="@PlayArea.css" xmlns="http://javafx.com/javafx/8.0.231" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.PlayArea">
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<StackPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="800" prefWidth="1000" stylesheets="@PlayArea.css"
+           xmlns="http://javafx.com/javafx/8.0.231" fx:controller="main.PlayArea">
 
 
     <BorderPane fx:id="gameBoard" styleClass="gameBoard">
@@ -15,90 +11,92 @@
             <GridPane fx:id="gamePanel" alignment="CENTER">
             </GridPane>
         </center>
-      <left>
-         <VBox alignment="CENTER" prefHeight="794.0" prefWidth="148.0" spacing="5.0" BorderPane.alignment="CENTER">
-            <children>
-               <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Pocket">
-                  <font>
-                     <Font size="23.0" />
-                  </font>
-               </Text>
-               <GridPane fx:id="pocket" alignment="TOP_CENTER" prefWidth="101.0">
-               </GridPane>
-               <Text strokeType="OUTSIDE" strokeWidth="0.0" />
-               <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Game size">
-                  <font>
-                     <Font size="19.0" />
-                  </font>
-               </Text>
-               <Text fx:id="size" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="10 X 20">
-                  <font>
-                     <Font size="19.0" />
-                  </font>
-               </Text>
-               <Text strokeType="OUTSIDE" strokeWidth="0.0" />
-               <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Time" wrappingWidth="47.08251953125">
-                  <font>
-                     <Font size="19.0" />
-                  </font>
-               </Text>
-               <Text fx:id="time" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="00:00" wrappingWidth="55.08251953125">
-                  <font>
-                     <Font size="19.0" />
-                  </font>
-               </Text>
-               <Text strokeType="OUTSIDE" strokeWidth="0.0" />
-               <Text strokeType="OUTSIDE" strokeWidth="0.0" />
-               <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Points">
-                  <font>
-                     <Font size="19.0" />
-                  </font>
-               </Text>
-               <Text fx:id="points" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="000000">
-                  <font>
-                     <Font size="19.0" />
-                  </font>
-               </Text>
-               <Text strokeType="OUTSIDE" strokeWidth="0.0" />
-               <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Level">
-                  <font>
-                     <Font size="19.0" />
-                  </font>
-               </Text>
-               <Text fx:id="level" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="1">
-                  <font>
-                     <Font size="19.0" />
-                  </font>
-               </Text>
-               <Text strokeType="OUTSIDE" strokeWidth="0.0" />
-               <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Lines">
-                  <font>
-                     <Font size="19.0" />
-                  </font>
-               </Text>
-               <Text fx:id="lines" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="0001">
-                  <font>
-                     <Font size="19.0" />
-                  </font>
-               </Text>
-            </children>
-         </VBox>
-      </left>
-      <right>
-         <VBox alignment="CENTER" prefHeight="796.0" prefWidth="177.0" spacing="5.0" BorderPane.alignment="CENTER">
-            <children>
-               <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Next">
-                  <font>
-                     <Font size="23.0" />
-                  </font>
-               </Text>
-               <GridPane fx:id="next1" alignment="CENTER">
-               </GridPane>
-               <GridPane fx:id="next2" alignment="CENTER">
-               </GridPane>
-            </children>
-         </VBox>
-      </right>
+        <left>
+            <VBox alignment="CENTER" prefHeight="794.0" prefWidth="148.0" spacing="5.0" BorderPane.alignment="CENTER">
+                <children>
+                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Pocket">
+                        <font>
+                            <Font size="23.0"/>
+                        </font>
+                    </Text>
+                    <GridPane fx:id="pocket" alignment="TOP_CENTER" prefWidth="101.0">
+                    </GridPane>
+                    <Text strokeType="OUTSIDE" strokeWidth="0.0"/>
+                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Game size">
+                        <font>
+                            <Font size="19.0"/>
+                        </font>
+                    </Text>
+                    <Text fx:id="size" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="10 X 20">
+                        <font>
+                            <Font size="19.0"/>
+                        </font>
+                    </Text>
+                    <Text strokeType="OUTSIDE" strokeWidth="0.0"/>
+                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Time"
+                          wrappingWidth="47.08251953125">
+                        <font>
+                            <Font size="19.0"/>
+                        </font>
+                    </Text>
+                    <Text fx:id="time" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="00:00"
+                          wrappingWidth="55.08251953125">
+                        <font>
+                            <Font size="19.0"/>
+                        </font>
+                    </Text>
+                    <Text strokeType="OUTSIDE" strokeWidth="0.0"/>
+                    <Text strokeType="OUTSIDE" strokeWidth="0.0"/>
+                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Points">
+                        <font>
+                            <Font size="19.0"/>
+                        </font>
+                    </Text>
+                    <Text fx:id="points" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="000000">
+                        <font>
+                            <Font size="19.0"/>
+                        </font>
+                    </Text>
+                    <Text strokeType="OUTSIDE" strokeWidth="0.0"/>
+                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Level">
+                        <font>
+                            <Font size="19.0"/>
+                        </font>
+                    </Text>
+                    <Text fx:id="level" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="1">
+                        <font>
+                            <Font size="19.0"/>
+                        </font>
+                    </Text>
+                    <Text strokeType="OUTSIDE" strokeWidth="0.0"/>
+                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Lines">
+                        <font>
+                            <Font size="19.0"/>
+                        </font>
+                    </Text>
+                    <Text fx:id="lines" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="0001">
+                        <font>
+                            <Font size="19.0"/>
+                        </font>
+                    </Text>
+                </children>
+            </VBox>
+        </left>
+        <right>
+            <VBox alignment="CENTER" prefHeight="796.0" prefWidth="177.0" spacing="5.0" BorderPane.alignment="CENTER">
+                <children>
+                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Next">
+                        <font>
+                            <Font size="23.0"/>
+                        </font>
+                    </Text>
+                    <GridPane fx:id="next1" alignment="CENTER">
+                    </GridPane>
+                    <GridPane fx:id="next2" alignment="CENTER">
+                    </GridPane>
+                </children>
+            </VBox>
+        </right>
     </BorderPane>
 
 </StackPane>

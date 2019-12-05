@@ -17,11 +17,11 @@ public class Main extends Application {
     /**
      * Height of the map
      */
-    public static int height = 25;
+    public static int height = 16;
     /**
      * Width of the map
      */
-    public static int width = 18;
+    public static int width = 20;
 
     /**
      * Highscores

@@ -32,7 +32,7 @@ public class ScoreModel {
      * @param date   Date of the score
      */
     public ScoreModel(Integer points, String name, Date date) {
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm");
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         this.points = new SimpleIntegerProperty(points);
         this.name = new SimpleStringProperty(name);
         this.date = new SimpleStringProperty(dateFormat.format(date));
@@ -63,7 +63,7 @@ public class ScoreModel {
      * @param date New dates
      */
     public void setName(Date date) {
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm");
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         this.date = new SimpleStringProperty(dateFormat.format(date));
     }
 
